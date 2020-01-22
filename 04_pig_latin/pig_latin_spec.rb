@@ -61,12 +61,27 @@ describe "#translate" do
   end
 
   it "translates many words" do
-    s = translate("the quick brown fox")
-    expect(s).to eq("ethay ickquay ownbray oxfay")
+    s = translate("the quick brown fox jumped over the lazy dog")
+    expect(s).to eq("ethay ickquay ownbray oxfay umpedjay overay ethay azylay ogday")
   end
 
   # Test-driving bonus:
   # * write a test asserting that capitalized words are still capitalized (but with a different initial capital letter, of course)
   # * retain the punctuation from the original phrase
+
+  it "changes capital letters to the first letter" do
+    s = translate("John Smith.")
+    expect(s).to eq("Ohnjay Ithsmay.")
+  end
+
+  it "keeps punctuation from the original phrase" do
+    s = translate("Hello! How are you bitch? Yay! My day is good...")
+    expect(s).to eq("Ellohay! Owhay areay youay itchbay? Ayyay! Ymay ayday isay oodgay...")
+  end
+
+  it "keeps quotation marks in the right place" do
+    s = translate("Mark says 'Hello world!'")
+    expect(s).to eq("Arkmay ayssay 'Ellohay orldway!'")
+  end
 
 end
